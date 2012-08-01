@@ -4,6 +4,9 @@
  */
 package interpenyasrubielos;
 
+import interpenyasrubielos.asistente.EsqueletoAsistente;
+import interpenyasrubielos.asistente.paneles.SelectorPedido;
+import interpenyasrubielos.asistente.paneles.SelectorSocios;
 import interpenyasrubielos.dialogos.EditSocios;
 import interpenyasrubielos.dialogos.Prenda;
 import interpenyasrubielos.dialogos.penya;
@@ -35,10 +38,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.jTableArrayList2.setCaps(propspe, cabpe);
         this.jTableArrayList2.setList(InterpenyasRubielos.pym.getLista());
         
+         String[] cabped = {"Codigo","Fecha","Socio","Importe","Entregado","Pagado"};
+        String[] propsped = {"id","fecha","socios",  "importe", "entregado","pagado"};
+        this.jTableArrayList3.setCaps(propsped, cabped);
+        this.jTableArrayList3.setList(InterpenyasRubielos.pm.getLista());
+        
+        
         String[] cabro = {"Codigo","Descripcion","Talla", "Color"};
         String[] propsro = {"id","descripcion",  "talla", "color"};
         this.jTableArrayList4.setCaps(propsro, cabro);
         this.jTableArrayList4.setList(InterpenyasRubielos.rm.getLista());
+        
         
     }
 
@@ -73,18 +83,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jToolBar3 = new javax.swing.JToolBar();
         jButton7 = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JToolBar.Separator();
-        jButton8 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        jButton9 = new javax.swing.JButton();
-        jSeparator9 = new javax.swing.JToolBar.Separator();
         jButton15 = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JToolBar.Separator();
-        jButton13 = new javax.swing.JButton();
-        jSeparator10 = new javax.swing.JToolBar.Separator();
         jButton16 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JToolBar.Separator();
-        jButton14 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableArrayList3 = new es.timmp.componets.JTableArrayList();
         jPanel4 = new javax.swing.JPanel();
@@ -235,26 +238,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jToolBar3.setRollover(true);
 
-        jButton7.setText("Masivo");
+        jButton7.setText("Nuevo");
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jToolBar3.add(jButton7);
-        jToolBar3.add(jSeparator5);
-
-        jButton8.setText("Individual");
-        jButton8.setFocusable(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton8);
         jToolBar3.add(jSeparator6);
-
-        jButton9.setText("Eliminar");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton9);
-        jToolBar3.add(jSeparator9);
 
         jButton15.setText("Entrega");
         jButton15.setFocusable(false);
@@ -263,25 +257,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jToolBar3.add(jButton15);
         jToolBar3.add(jSeparator11);
 
-        jButton13.setText("Entrega Masiva");
-        jButton13.setFocusable(false);
-        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton13);
-        jToolBar3.add(jSeparator10);
-
         jButton16.setText("Pago");
         jButton16.setFocusable(false);
         jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar3.add(jButton16);
         jToolBar3.add(jSeparator12);
-
-        jButton14.setText("Pago Masivo");
-        jButton14.setFocusable(false);
-        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(jButton14);
 
         jTableArrayList3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -457,6 +438,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+          EsqueletoAsistente asistente = new EsqueletoAsistente(this);
+        asistente.addPanel("pedido", new SelectorPedido(asistente));
+         asistente.addPanel("socios", new SelectorSocios(asistente));
+        asistente.ver();
+        this.jTableArrayList3.setList(InterpenyasRubielos.pm.getLista());
+            this.jTabbedPane1.updateUI();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -503,8 +493,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
@@ -513,8 +501,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -524,17 +510,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator10;
     private javax.swing.JToolBar.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator12;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
-    private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
-    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private es.timmp.componets.JTableArrayList jTableArrayList1;
     private es.timmp.componets.JTableArrayList jTableArrayList2;

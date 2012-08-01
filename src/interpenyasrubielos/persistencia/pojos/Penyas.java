@@ -92,7 +92,12 @@ public class Penyas  implements java.io.Serializable {
         this.socioses = socioses;
     }
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 
+    
 
 
 }

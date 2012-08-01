@@ -155,6 +155,11 @@ public class Socios  implements java.io.Serializable {
         this.pedidoses = pedidoses;
     }
 
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
 
 
 

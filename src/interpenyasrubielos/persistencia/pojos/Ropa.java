@@ -103,6 +103,12 @@ public class Ropa  implements java.io.Serializable {
         this.ropaSocioses = ropaSocioses;
     }
 
+    @Override
+    public String toString() {
+        return this.descripcion+" "+this.talla;
+    }
+    
+    
 
 
 
